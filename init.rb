@@ -9,7 +9,9 @@ Redmine::Plugin.register :redmine_landing_page do
   author_url 'https://github.com/biow0lf'
 end
 
-ActionDispatch::Callbacks.to_prepare do
+reloader = defined?(ActiveSupport::Reloader) ? ActiveSupport::Reloader : ActionDispatch::Reloader
+
+reloader.to_prepare do
   require_dependency 'projects_controller'
   ProjectsController.send(:include, RedmineLandingPage::Patches::ProjectsControllerPatch)
 
