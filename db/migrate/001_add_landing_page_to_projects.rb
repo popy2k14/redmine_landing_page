@@ -11,4 +11,5 @@ class AddLandingPageToProjects < ActiveRecord::Migration[4.2]
       remove_column :projects, :landing_page
     end
   end
+  
 end
